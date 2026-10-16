@@ -1,0 +1,23 @@
+# Titanic, coloured by class, lower triangle only. Run from scatter_plot/:
+#   python -m scatterkit --config=examples/titanic.txt
+data_path=../Titanic-Dataset.xls
+features=Age,Fare,SibSp
+feature_labels=Age (years),Fare (£),Siblings / spouses
+hue_column=Pclass
+output_path=examples/2_titanic.png
+title_text=Titanic passengers
+
+matrix_part=lower
+diagonal_kind=kde
+diagonal_kde_fill_is_shown=true
+points_alpha=0.45
+points_hue_markers=o,s,^
+regression_line_predict_bands=-1,2
+regression_line_span=axes
+annotation_format=r = {r:.2f}\nn = {n}
+grid_major_shown=true
+spine_top_shown=false
+spine_right_shown=false
+ticks_x_minor_count=3
+legend_title=Class
+legend_regression_shown=true

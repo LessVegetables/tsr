@@ -1,0 +1,717 @@
+# scatterkit config -- one param=value per line, '#' starts a comment.
+# Every parameter is listed with its current value; delete the lines you
+# do not want to override. The defaults themselves live in defaults.py.
+
+
+# ===== DATA -- what is plotted (not design) =====
+
+# CSV / TSV / Excel file, relative to where you run from; empty -> built-in demo data  [text]
+data_path=
+
+# column separator of a text file; auto -> sniffed  [text | auto]
+data_separator=auto
+
+# columns to plot, in this order; empty -> every numeric column  [comma-separated text]
+features=
+
+# display names, same order as features; empty -> the column names  [comma-separated text]
+feature_labels=
+
+# categorical column that colours the points; empty -> one colour  [text]
+hue_column=
+
+# order of the hue levels; empty -> sorted  [comma-separated text]
+hue_order=
+
+# random subsample down to this many rows; 0 -> keep all  [int]
+max_points=0
+
+# seed for the subsample and the demo data  [int]
+random_seed=0
+
+# N of the built-in demo data (used when data_path is empty)  [int]
+demo_features=4
+
+# rows of the built-in demo data  [int]
+demo_points=150
+
+
+# ===== OUTPUT =====
+
+# where the picture is written; the extension picks the format (png, pdf, svg)  [text]
+output_path=scatter_plot.png
+
+# resolution of raster output  [int]
+output_dpi=200
+
+# transparent figure background in the file  [true | false]
+output_transparent=false
+
+# crop the file to the drawn content; while true, the figure_margin_* below have almost no visible effect  [true | false]
+output_tight_crop=true
+
+# inches of padding kept around the content when cropping  [float]
+output_tight_pad=0.1
+
+# also open an interactive window  [true | false]
+output_show_window=false
+
+
+# ===== FIGURE AND PANEL GEOMETRY (inches) =====
+
+# auto -> margins + panels + gaps; a number rescales the panels to fit  [float | auto]
+figure_width=auto
+
+# auto -> margins + panels + gaps; a number rescales the panels to fit  [float | auto]
+figure_height=auto
+
+# [colour]
+figure_background_color=white
+
+# [float]
+figure_margin_left=0.75
+
+# [float]
+figure_margin_right=0.25
+
+# [float]
+figure_margin_top=0.55
+
+# [float]
+figure_margin_bottom=0.65
+
+# width of one panel's box  [float]
+panel_width=2.2
+
+# height of one panel's box  [float]
+panel_height=2.2
+
+# space between neighbouring columns  [float]
+panel_gap_horizontal=0.12
+
+# space between neighbouring rows  [float]
+panel_gap_vertical=0.12
+
+# [colour]
+panel_background_color=white
+
+
+# ===== MATRIX LAYOUT =====
+
+# which triangle of the N x N matrix is drawn  [full | lower | upper]
+matrix_part=full
+
+# false with lower/upper drops the diagonal row and column entirely (N=2 -> a single panel)  [true | false]
+diagonal_shown=true
+
+# empty space around the data, as a fraction of each feature's range  [float]
+axis_limits_padding=0.06
+
+
+# ===== POINTS =====
+
+# [true | false]
+points_shown=true
+
+# marker area, points^2  [float]
+points_size=14
+
+# used when there is no hue_column  [colour]
+points_color=#3C6E9F
+
+# one colour per hue level, cycled  [comma-separated colours]
+points_hue_palette=#3C6E9F,#DD8452,#55A868,#C44E52,#8172B3,#937860
+
+# matplotlib marker (o s ^ v D x + . *), used when there is no hue_column  [text]
+points_marker=o
+
+# one marker per hue level, cycled  [comma-separated text]
+points_hue_markers=o
+
+# opacity, 0..1  [float]
+points_alpha=0.6
+
+# [colour]
+points_edge_color=none
+
+# [float]
+points_edge_width=0.4
+
+# drawing order; higher is on top  [float]
+points_zorder=3
+
+
+# ===== REGRESSION =====
+
+# master switch: false hides the line, its bands and their legend entries  [true | false]
+regression_shown=true
+
+# true -> one fit per hue level; false -> one fit over all points  [true | false]
+regression_per_hue=false
+
+# polynomial degree of the least-squares fit; 1 is a straight line  [int]
+regression_degree=1
+
+# [true | false]
+regression_line_shown=true
+
+# auto -> the hue level's colour when regression_per_hue, else points_color  [colour | auto]
+regression_line_color=black
+
+# [float]
+regression_line_width=1.4
+
+# [- | -- | -. | : | on,off,...]
+regression_line_style=-
+
+# [float]
+regression_line_alpha=1
+
+# data -> from min to max of x; axes -> across the whole panel  [data | axes]
+regression_line_span=data
+
+# points the line and the bands are evaluated at  [int]
+regression_line_resolution=200
+
+# [float]
+regression_line_zorder=5
+
+# [true | false]
+regression_line_predict_bands_shown=true
+
+# one band edge per value, drawn at fit + value * standard error (-1,2 -> one edge 1 SE below, one 2 SE above)  [comma-separated floats]
+regression_line_predict_bands=-2,2
+
+# which standard error: prediction (a new observation), confidence (the fitted mean), residual (constant, parallel lines)  [prediction | confidence | residual]
+regression_line_predict_bands_kind=prediction
+
+# the edges themselves  [true | false]
+regression_line_predict_bands_line_shown=true
+
+# auto -> the regression line's colour  [colour | auto]
+regression_line_predict_bands_line_color=auto
+
+# [float]
+regression_line_predict_bands_line_width=0.8
+
+# [- | -- | -. | : | on,off,...]
+regression_line_predict_bands_line_style=--
+
+# [float]
+regression_line_predict_bands_line_alpha=0.9
+
+# shading between the lowest and highest edge (a single edge shades up to the fit)  [true | false]
+regression_line_predict_bands_fill_shown=true
+
+# auto -> the regression line's colour  [colour | auto]
+regression_line_predict_bands_fill_color=auto
+
+# [float]
+regression_line_predict_bands_fill_alpha=0.1
+
+# [float]
+regression_line_predict_bands_zorder=4
+
+
+# ===== ANNOTATION -- the statistics text inside each scatter panel =====
+
+# [true | false]
+annotation_shown=true
+
+# fields: {r} Pearson, {p} its p-value, {rho} Spearman, {r2} of the fit, {slope}, {intercept}, {n}; \n breaks the line  [text]
+annotation_format=r = {r:.2f}
+
+# anchor, as a fraction of the panel width  [float]
+annotation_x=0.05
+
+# anchor, as a fraction of the panel height  [float]
+annotation_y=0.95
+
+# [left | center | right]
+annotation_align_horizontal=left
+
+# [top | center | bottom]
+annotation_align_vertical=top
+
+# [float]
+annotation_font_size=9
+
+# [normal | bold]
+annotation_font_weight=normal
+
+# [normal | italic]
+annotation_font_style=normal
+
+# [colour]
+annotation_color=black
+
+# a filled box behind the text  [true | false]
+annotation_box_shown=true
+
+# [colour]
+annotation_box_color=white
+
+# [float]
+annotation_box_alpha=0.8
+
+# [colour]
+annotation_box_edge_color=none
+
+# [float]
+annotation_box_edge_width=0.6
+
+# [float]
+annotation_box_padding=2
+
+# [float]
+annotation_zorder=6
+
+
+# ===== DIAGONAL -- a feature against itself =====
+
+# histogram, density curve, both, or just the feature's name  [hist | kde | hist_kde | name]
+diagonal_kind=hist
+
+# tallest bar / peak, as a fraction of the panel height  [float]
+diagonal_height=0.9
+
+# auto -> numpy's automatic bin count  [int | auto]
+diagonal_hist_bins=auto
+
+# auto -> the points' colour (per hue level)  [colour | auto]
+diagonal_hist_color=auto
+
+# [float]
+diagonal_hist_alpha=0.55
+
+# [colour]
+diagonal_hist_edge_color=white
+
+# [float]
+diagonal_hist_edge_width=0.5
+
+# bar width as a fraction of the bin; below 1 leaves gaps  [float]
+diagonal_hist_bar_width=1
+
+# [float]
+diagonal_hist_zorder=2
+
+# [true | false]
+diagonal_kde_line_shown=true
+
+# auto -> the points' colour (per hue level)  [colour | auto]
+diagonal_kde_line_color=auto
+
+# [float]
+diagonal_kde_line_width=1.3
+
+# [- | -- | -. | : | on,off,...]
+diagonal_kde_line_style=-
+
+# [float]
+diagonal_kde_line_alpha=1
+
+# [true | false]
+diagonal_kde_fill_shown=false
+
+# auto -> the points' colour (per hue level)  [colour | auto]
+diagonal_kde_fill_color=auto
+
+# [float]
+diagonal_kde_fill_alpha=0.25
+
+# multiplies Scott's bandwidth; above 1 is smoother  [float]
+diagonal_kde_bandwidth_scale=1
+
+# points the curve is evaluated at  [int]
+diagonal_kde_resolution=200
+
+# [float]
+diagonal_kde_zorder=2.5
+
+# [float]
+diagonal_name_font_size=13
+
+# [normal | bold]
+diagonal_name_font_weight=bold
+
+# [normal | italic]
+diagonal_name_font_style=normal
+
+# [colour]
+diagonal_name_color=black
+
+
+# ===== BOX BORDERS (spines) =====
+
+# [colour]
+spine_color=black
+
+# [float]
+spine_width=1
+
+# [- | -- | -. | : | on,off,...]
+spine_style=-
+
+# points each border is pushed outward from the box  [float]
+spine_offset=0
+
+# [true | false]
+spine_left_shown=true
+
+# auto -> spine_color  [colour | auto]
+spine_left_color=auto
+
+# auto -> spine_width  [float | auto]
+spine_left_width=auto
+
+# [true | false]
+spine_bottom_shown=true
+
+# auto -> spine_color  [colour | auto]
+spine_bottom_color=auto
+
+# auto -> spine_width  [float | auto]
+spine_bottom_width=auto
+
+# [true | false]
+spine_right_shown=true
+
+# auto -> spine_color  [colour | auto]
+spine_right_color=auto
+
+# auto -> spine_width  [float | auto]
+spine_right_width=auto
+
+# [true | false]
+spine_top_shown=true
+
+# auto -> spine_color  [colour | auto]
+spine_top_color=auto
+
+# auto -> spine_width  [float | auto]
+spine_top_width=auto
+
+
+# ===== TICKS -- big (major) and little (minor) =====
+
+# nice -> at most *_major_count ticks, at round values; exact -> exactly that many, evenly spaced edge to edge  [nice | exact]
+ticks_major_count_mode=nice
+
+# [true | false]
+ticks_x_on_bottom=true
+
+# [true | false]
+ticks_x_on_top=false
+
+# [true | false]
+ticks_y_on_left=true
+
+# [true | false]
+ticks_y_on_right=false
+
+# [true | false]
+ticks_x_major_shown=true
+
+# auto -> matplotlib decides  [int | auto]
+ticks_x_major_count=4
+
+# [float]
+ticks_x_major_length=4
+
+# [float]
+ticks_x_major_width=1
+
+# [colour]
+ticks_x_major_color=black
+
+# [in | out | inout]
+ticks_x_major_direction=out
+
+# [true | false]
+ticks_x_minor_shown=true
+
+# little ticks between two neighbouring big ones  [int]
+ticks_x_minor_count=1
+
+# [float]
+ticks_x_minor_length=2
+
+# [float]
+ticks_x_minor_width=0.7
+
+# [colour]
+ticks_x_minor_color=black
+
+# [in | out | inout]
+ticks_x_minor_direction=out
+
+# [true | false]
+ticks_y_major_shown=true
+
+# auto -> matplotlib decides  [int | auto]
+ticks_y_major_count=4
+
+# [float]
+ticks_y_major_length=4
+
+# [float]
+ticks_y_major_width=1
+
+# [colour]
+ticks_y_major_color=black
+
+# [in | out | inout]
+ticks_y_major_direction=out
+
+# [true | false]
+ticks_y_minor_shown=true
+
+# little ticks between two neighbouring big ones  [int]
+ticks_y_minor_count=1
+
+# [float]
+ticks_y_minor_length=2
+
+# [float]
+ticks_y_minor_width=0.7
+
+# [colour]
+ticks_y_minor_color=black
+
+# [in | out | inout]
+ticks_y_minor_direction=out
+
+
+# ===== TICK LABELS -- the numbers =====
+
+# true -> only on panels with nothing below them (x) / to their left (y)  [true | false]
+tick_labels_only_outer=true
+
+# [true | false]
+tick_labels_x_shown=true
+
+# [float]
+tick_labels_x_font_size=9
+
+# [colour]
+tick_labels_x_color=black
+
+# degrees  [float]
+tick_labels_x_rotation=0
+
+# points between tick and number  [float]
+tick_labels_x_pad=3
+
+# e.g. {x:.1f} or {x:,.0f}; auto -> matplotlib decides  [text | auto]
+tick_labels_x_format=auto
+
+# [true | false]
+tick_labels_y_shown=true
+
+# [float]
+tick_labels_y_font_size=9
+
+# [colour]
+tick_labels_y_color=black
+
+# degrees  [float]
+tick_labels_y_rotation=0
+
+# points between tick and number  [float]
+tick_labels_y_pad=3
+
+# e.g. {x:.1f} or {x:,.0f}; auto -> matplotlib decides  [text | auto]
+tick_labels_y_format=auto
+
+
+# ===== AXIS LABELS -- the feature names =====
+
+# true -> only on panels with nothing below them (x) / to their left (y)  [true | false]
+axis_labels_only_outer=true
+
+# [true | false]
+axis_labels_x_shown=true
+
+# [float]
+axis_labels_x_font_size=11
+
+# [normal | bold]
+axis_labels_x_font_weight=normal
+
+# [normal | italic]
+axis_labels_x_font_style=normal
+
+# [colour]
+axis_labels_x_color=black
+
+# degrees  [float]
+axis_labels_x_rotation=0
+
+# points between tick labels and name  [float]
+axis_labels_x_pad=4
+
+# [true | false]
+axis_labels_y_shown=true
+
+# [float]
+axis_labels_y_font_size=11
+
+# [normal | bold]
+axis_labels_y_font_weight=normal
+
+# [normal | italic]
+axis_labels_y_font_style=normal
+
+# [colour]
+axis_labels_y_color=black
+
+# degrees  [float]
+axis_labels_y_rotation=90
+
+# points between tick labels and name  [float]
+axis_labels_y_pad=4
+
+# line the names up across panels regardless of tick label width  [true | false]
+axis_labels_aligned=true
+
+
+# ===== GRID =====
+
+# [both | x | y]
+grid_axis=both
+
+# drawing order of grid and tick marks; raise above points_zorder to draw the grid over the points  [float]
+grid_zorder=0.5
+
+# [true | false]
+grid_major_shown=false
+
+# [colour]
+grid_major_color=#D0D0D0
+
+# [float]
+grid_major_width=0.6
+
+# [- | -- | -. | : | on,off,...]
+grid_major_style=-
+
+# [float]
+grid_major_alpha=1
+
+# [true | false]
+grid_minor_shown=false
+
+# [colour]
+grid_minor_color=#E8E8E8
+
+# [float]
+grid_minor_width=0.4
+
+# [- | -- | -. | : | on,off,...]
+grid_minor_style=:
+
+# [float]
+grid_minor_alpha=1
+
+
+# ===== TITLE =====
+
+# [true | false]
+title_shown=true
+
+# \n breaks the line  [text]
+title_text=Scatter plot matrix
+
+# relative to the block of panels  [left | center | right]
+title_align=center
+
+# inches between the top row of panels and the title  [float]
+title_pad=0.15
+
+# [float]
+title_font_size=14
+
+# [normal | bold]
+title_font_weight=bold
+
+# [normal | italic]
+title_font_style=normal
+
+# [colour]
+title_color=black
+
+
+# ===== LEGEND -- appears when there is a hue_column or a regression entry =====
+
+# [true | false]
+legend_shown=true
+
+# auto -> the hue column's name; empty -> no title  [text | auto]
+legend_title=auto
+
+# which point of the legend sits on the anchor: upper/center/lower + left/center/right, e.g. upper right  [text]
+legend_location=center left
+
+# anchor, as a fraction of the figure width (1 = right edge)  [float]
+legend_anchor_x=1
+
+# anchor, as a fraction of the figure height (1 = top edge)  [float]
+legend_anchor_y=0.5
+
+# [int]
+legend_columns=1
+
+# [float]
+legend_font_size=10
+
+# [float]
+legend_title_font_size=10
+
+# [normal | bold]
+legend_title_font_weight=bold
+
+# [colour]
+legend_text_color=black
+
+# marker diameter in the legend, points  [float]
+legend_marker_size=6
+
+# vertical space between entries, in font sizes  [float]
+legend_label_spacing=0.4
+
+# length of a line sample, in font sizes  [float]
+legend_handle_length=1.6
+
+# space between sample and text, in font sizes  [float]
+legend_handle_text_pad=0.5
+
+# space between columns, in font sizes  [float]
+legend_column_spacing=1.2
+
+# space inside the frame, in font sizes  [float]
+legend_border_pad=0.4
+
+# [true | false]
+legend_frame_shown=false
+
+# [colour]
+legend_frame_color=white
+
+# [float]
+legend_frame_alpha=1
+
+# [colour]
+legend_frame_edge_color=black
+
+# [float]
+legend_frame_edge_width=0.8
+
+# add entries for the regression line and its bands  [true | false]
+legend_regression_shown=false
+
+# [text]
+legend_regression_label=regression
+
+# [text]
+legend_bands_label=prediction band

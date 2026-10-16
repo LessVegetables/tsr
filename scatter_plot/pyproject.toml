@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scatterkit"
+version = "0.1.0"
+description = "Scatter plot matrix for N features, with every visual choice set from a param=value config."
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2",
+    "matplotlib>=3.7",
+    "numpy",
+    "scipy>=1.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
