@@ -14,8 +14,12 @@ from .stats import (
 )
 from .viz import (
     BoxSpec,
-    PlotStyle,
+    RainStyle,
+    ScatterStyle,
+    RAIN_STYLE,
+    SCATTER_STYLE,
     raincloud_grid,
+    set_tick_step,
     scatter_matrix,
     scatter_panel,
 )
@@ -32,8 +36,12 @@ __all__ = [
     "correlation_tables",
     "plot_correlation_heatmaps",
     "BoxSpec",
-    "PlotStyle",
+    "RainStyle",
+    "ScatterStyle",
+    "RAIN_STYLE",
+    "SCATTER_STYLE",
     "raincloud_grid",
+    "set_tick_step",
     "scatter_matrix",
     "scatter_panel",
     "IMPUTERS",
