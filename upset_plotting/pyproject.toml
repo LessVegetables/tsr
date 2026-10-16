@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "upsetkit"
+version = "0.1.0"
+description = "Fully styleable UpSet plots for any dataset and any binary conditions."
+requires-python = ">=3.10"
+dependencies = [
+    "upsetplot==0.9.*",
+    # upsetplot 0.9 relies on inplace chained fillna, which is a no-op under pandas 3 copy-on-write
+    "pandas>=2,<3",
+    "matplotlib>=3.7",
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
